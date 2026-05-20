@@ -1,8 +1,8 @@
 pipeline{
     agent any
     tools{
-        jdk 'jdk17'
-        nodejs 'node23'
+        jdk 'jdk21'
+        nodejs 'nodejs'
     }
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
@@ -54,8 +54,8 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker-creds', toolName: 'docker'){   
                        sh "docker build -t swiggy ."
-                       sh "docker tag swiggy kastrov/swiggy:latest "
-                       sh "docker push kastrov/swiggy:latest "
+                       sh "docker tag swiggy hhvnagasai/swiggy:latest"
+                       sh "docker push hhvnagasai/swiggy:latest"
                     }
                 }
             }
